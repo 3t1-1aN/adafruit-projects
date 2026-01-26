@@ -8,7 +8,7 @@ import board
 from rainbowio import colorwheel
 import neopixel
 
-pixels = neopixel.NeoPixel(board.NEOPIXEL, 10, brightness=0.2, auto_write=False)
+pixels = neopixel.NeoPixel(board.NEOPIXEL, 10, brightness=0.1, auto_write=False)
 
 # choose which demos to play
 # 1 means play, 0 means don't!
@@ -54,7 +54,8 @@ WHITE = (255, 255, 255)
 OFF = (0, 0, 0)
 
 while True:
-    if color_chase_demo:
+    which_rainbow = int(input("choose a rainbow pattern you would like to see (1-3)"))
+    if which_rainbow == 1:
         color_chase(RED, 0.1)  # Increase the number to slow down the color chase
         color_chase(YELLOW, 0.1)
         color_chase(GREEN, 0.1)
@@ -63,7 +64,7 @@ while True:
         color_chase(PURPLE, 0.1)
         color_chase(OFF, 0.1)
 
-    if flash_demo:
+    elif which_rainbow == 2:
         pixels.fill(RED)
         pixels.show()
         # Increase or decrease to change the speed of the solid color change.
@@ -78,8 +79,8 @@ while True:
         pixels.show()
         time.sleep(1)
 
-    if rainbow_cycle_demo:
+    elif which_rainbow == 3:
         rainbow_cycle(0.05)  # Increase the number to slow down the rainbow.
 
-    if rainbow_demo:
+    else:
         rainbow(0.05)  # Increase the number to slow down the rainbow.
